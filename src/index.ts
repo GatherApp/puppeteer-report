@@ -1,4 +1,4 @@
-import * as fs from "fs";
+import fs from "fs";
 import * as core from "./core";
 import puppeteer, { PDFOptions } from "puppeteer";
 
