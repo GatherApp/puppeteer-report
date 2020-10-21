@@ -186,6 +186,10 @@ export async function getHeadersEvaluator(basePdfBuffer: Uint8Array) {
     const cloneElement = (element: HTMLElement, pageNumber: string) => {
       const cloned = element.cloneNode(true) as Document;
 
+      // fill totalPages
+      let totalPageElements = cloned.getElementsByClassName("totalPages");
+      setElementsValue(totalPageElements, pagesCount.toString());
+
       // fill pageNumber
       const elements = cloned.getElementsByClassName("pageNumber");
       setElementsValue(elements, pageNumber);
@@ -226,10 +230,6 @@ export async function getHeadersEvaluator(basePdfBuffer: Uint8Array) {
         cloneElement(footer, (i + 1).toString());
       }
     }
-
-    // fill total page
-    let elements = document.getElementsByClassName("totalPages");
-    setElementsValue(elements, pagesCount.toString());
   };
 
   return [doc, pageFunc, argument] as [

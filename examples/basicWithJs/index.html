@@ -322,9 +322,21 @@
         <p>test 299 </p>
         <p>test 300 </p>
 
-        <div id="footer">
+        <div id="footer" onchange="onChangeFooter(this)">
             <h1>Footer</h1>
+            Current <span class="pageNumber"></span>
+            Total <span class="totalPages"></span>
         </div>
+
+        <script>
+            function onChangeFooter(element) {
+                const totalPagesElement = element.getElementsByClassName('totalPages')[0];
+                const pageNumberElement = element.getElementsByClassName('pageNumber')[0];
+                if (pageNumberElement.textContent === totalPagesElement.textContent) {
+                    pageNumberElement.style.color = 'red'
+                }
+            }
+        </script>
     </div>
 </body>
 

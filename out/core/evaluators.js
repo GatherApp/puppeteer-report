@@ -144,6 +144,9 @@ async function getHeadersEvaluator(basePdfBuffer) {
         // duplicate an element in the page
         const cloneElement = (element, pageNumber) => {
             const cloned = element.cloneNode(true);
+            // fill totalPages
+            let totalPageElements = cloned.getElementsByClassName("totalPages");
+            setElementsValue(totalPageElements, pagesCount.toString());
             // fill pageNumber
             const elements = cloned.getElementsByClassName("pageNumber");
             setElementsValue(elements, pageNumber);
@@ -175,9 +178,6 @@ async function getHeadersEvaluator(basePdfBuffer) {
                 cloneElement(footer, (i + 1).toString());
             }
         }
-        // fill total page
-        let elements = document.getElementsByClassName("totalPages");
-        setElementsValue(elements, pagesCount.toString());
     };
     return [doc, pageFunc, argument];
 }
