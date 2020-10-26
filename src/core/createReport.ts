@@ -61,6 +61,8 @@ export async function createReport(
   // draw headers and/or footers over the base pages
   let baseIndex = 0;
   for (let i = 1; i <= headerPages.length; i++) {
+    if(basePages.length == baseIndex) break;
+
     const embeddedPage = embeddedPages[i - 1];
     const size = embeddedPage.size();
     const isOdd = i % 2 != 0;
